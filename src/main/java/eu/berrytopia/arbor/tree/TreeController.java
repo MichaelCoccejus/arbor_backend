@@ -31,7 +31,7 @@ public class TreeController {
         treeService.deleteTree(treeId);
     }
 
-    @PutMapping
+    @PutMapping(path = "{treeId}")
     public void updateTree(
             @PathVariable("treeId") Long treeId,
             @RequestParam(required = false) String name,
