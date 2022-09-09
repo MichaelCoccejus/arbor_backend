@@ -44,7 +44,7 @@ public class TreeService {
     @Transactional
     public void updateTree(Long treeId, String name, LocalDate plantedDate) {
         Tree tree = treeRepository.findById(treeId).orElseThrow(() -> new IllegalStateException(
-                "Tree with ID " + treeId + " does not exist"
+                "Tree with ID " + treeId + " does not exist."
         ));
 
         if (name != null && name.length() > 0 && !Objects.equals(tree.getName(), name)){
