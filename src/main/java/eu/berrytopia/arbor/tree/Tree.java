@@ -1,5 +1,6 @@
 package eu.berrytopia.arbor.tree;
 
+import eu.berrytopia.arbor.gpsPosition.GpsPosition;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +13,6 @@ import java.time.Period;
 @Entity
 @Table
 @ToString
-@EqualsAndHashCode
 public class Tree {
     @Id
     @SequenceGenerator(
@@ -31,6 +31,10 @@ public class Tree {
     @Transient
     private Integer age;
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "gpsposition_id")
+    private GpsPosition gpsPosition;
+
     public int getAge(){
         return Period.between(this.plantedDate,LocalDate.now()).getYears();
     }
@@ -40,6 +44,14 @@ public class Tree {
         this.name = name;
         this.plantedDate = plantedDate;
     }
+
+    public Tree(long id, String name, LocalDate plantedDate, GpsPosition gpsPosition) {
+        this.id = id;
+        this.name = name;
+        this.plantedDate = plantedDate;
+        this.gpsPosition = gpsPosition;
+    }
+
     public Tree(){
     }
 }
