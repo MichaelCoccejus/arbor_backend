@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -29,6 +30,7 @@ public class GpsPosition {
     private long id;
     private double longitude;
     private double latitude;
+    private Long altitude;
 
 
     public GpsPosition(){
@@ -37,6 +39,12 @@ public class GpsPosition {
     public GpsPosition(double longitude, double latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
+    }
+
+    public GpsPosition(double longitude, double latitude, long altitude) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.altitude = altitude;
     }
 }
 

@@ -17,8 +17,9 @@ public class GpsPositionConfig {
 
             GpsPosition one = new GpsPosition(24.0,9.0);
             GpsPosition two = new GpsPosition(49.0,5.0);
+            GpsPosition three = new GpsPosition(51,41,21);
 
-            gpsPositionRepository.saveAll(List.of(one,two));
+            gpsPositionRepository.saveAll(List.of(one,two,three));
 
         };
 

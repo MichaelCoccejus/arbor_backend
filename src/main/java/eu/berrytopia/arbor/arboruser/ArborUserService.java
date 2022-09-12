@@ -33,13 +33,22 @@ public class ArborUserService {
 
     @Transactional
     public void updateArborUser(ArborUser arborUser){
-        ArborUser arborUserOptional = arborUserRepository.findById(arborUser.getId()).orElseThrow(() -> new IllegalStateException(
-                "User with ID " + arborUser.getId() + "does not exist, "
-        ));
+        Optional<ArborUser> arborUserOptional = arborUserRepository.findById(arborUser.getId());
+        boolean exists = arborUserOptional.isPresent();
 
-        Optional<ArborUser> findUser = arborUserRepository.findByNickname(arborUser.getNickname());
-        boolean nickNameCheck = findUser.isPresent();
+        if (!exists) {
+            throw new IllegalStateException("User with ID " + arborUser.getId() + " does not exist.");
+        }
+        else {
 
+            Optional<ArborUser> findUser = arborUserRepository.findByNickname(arborUser.getNickname());
+            if (findUser.isPresent() && findUser.get().getId() != arborUser.getId()) {
+                throw new IllegalStateException("Nickname " + arborUser.getNickname() + " is taken.");
+            }
+            else {
+                arborUserRepository.save(arborUser);
+            }
+        }
     }
 
 

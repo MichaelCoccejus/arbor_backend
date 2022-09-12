@@ -22,14 +22,14 @@ public class GpsPositionService {
         return gpsPositionRepository.findGpsPositionById(gpsPositionId);
     }
 
-    public  void addNewGpsPosition(GpsPosition gpsPosition) {
+    public void addNewGpsPosition(GpsPosition gpsPosition) {
         gpsPositionRepository.save(gpsPosition);
     }
 
     public void deleteGpsPosition(Long gpsPositionId) {
         boolean exists = gpsPositionRepository.existsById(gpsPositionId);
         if (!exists){
-            throw new IllegalStateException("GPS Position with ID " + gpsPositionId +" does not exist");
+            throw new IllegalStateException("GPS Position with ID " + gpsPositionId + " does not exist");
         }
         gpsPositionRepository.deleteById(gpsPositionId);
     }
