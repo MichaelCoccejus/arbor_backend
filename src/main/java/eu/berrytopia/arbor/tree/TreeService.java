@@ -29,13 +29,13 @@ public class TreeService {
             throw new IllegalStateException("Name is taken");
         }
         treeRepository.save(tree);
-        System.out.println(tree);
+        //System.out.println(tree);
     }
 
     public void deleteTree(Long treeId) {
        boolean exists = treeRepository.existsById(treeId);
        if(!exists) {
-           throw new IllegalStateException("Tree with ID " + treeId + " does not exits");
+           throw new IllegalStateException("Tree with ID " + treeId + " does not exist.");
        }
        treeRepository.deleteById(treeId);
     }
@@ -47,7 +47,7 @@ public class TreeService {
                 "Tree with ID " + treeId + " does not exist."
         ));
 
-        if (name != null && name.length() > 0 && !Objects.equals(tree.getName(), name)){
+        if (name != null && name.length() > 0 && !Objects.equals(tree.getName(), name)) {
 
             tree.setName(name);
         }
