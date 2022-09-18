@@ -1,11 +1,14 @@
 package eu.berrytopia.arbor.tree;
 
+import eu.berrytopia.arbor.geoobject.GeoObject;
 import eu.berrytopia.arbor.gpsPosition.GpsPosition;
+import eu.berrytopia.arbor.organisation.Organisation;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 
 @Getter
@@ -13,8 +16,8 @@ import java.time.Period;
 @Entity
 @Table
 @ToString
-public class Tree {
-    @Id
+public class Tree extends GeoObject {
+    /*@Id
     @SequenceGenerator(
             name = "tree_sequence",
             sequenceName = "tree_sequence",
@@ -24,32 +27,20 @@ public class Tree {
             strategy = GenerationType.SEQUENCE,
             generator = "tree_sequence"
     )
-    private long id;
-    private String name;
+    private long id;*/
     private LocalDate plantedDate;
 
     @Transient
     private Integer age;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "gpsposition_id")
-    private GpsPosition gpsPosition;
 
     public int getAge(){
         return Period.between(this.plantedDate,LocalDate.now()).getYears();
     }
 
-    public Tree(long id, String name, LocalDate plantedDate) {
-        this.id = id;
-        this.name = name;
+    public Tree(Organisation organisation, String type, String name, String userDescription, GpsPosition gpsPosition, List<GpsPosition> area, LocalDate plantedDate) {
+        super(organisation, type, name, userDescription, gpsPosition, area);
         this.plantedDate = plantedDate;
-    }
-
-    public Tree(long id, String name, LocalDate plantedDate, GpsPosition gpsPosition) {
-        this.id = id;
-        this.name = name;
-        this.plantedDate = plantedDate;
-        this.gpsPosition = gpsPosition;
     }
 
     public Tree(){

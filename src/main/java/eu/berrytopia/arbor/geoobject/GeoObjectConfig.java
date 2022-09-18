@@ -32,8 +32,7 @@ public class GeoObjectConfig {
                     "GeoObjectName",
                     "Testobject",
                     gpsPosition,
-                    List.of(gpsPosition,gpsPosition2),
-                    new Timestamp(System.currentTimeMillis())
+                    List.of(gpsPosition,gpsPosition2)
             );
 
             geoObjectRepository.saveAll(List.of(geoObject1));
