@@ -20,9 +20,9 @@ public class ArborUser {
     private String nickname;
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "organisation_id")
-    private Organisation organisation;
+
+    @ManyToOne //owning Side
+    private Organisation organisation = new Organisation();
 
 
     public ArborUser() {
