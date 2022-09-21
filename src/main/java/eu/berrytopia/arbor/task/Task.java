@@ -1,4 +1,4 @@
-package eu.berrytopia.arbor.arboruser.task;
+package eu.berrytopia.arbor.task;
 
 import eu.berrytopia.arbor.arboruser.ArborUser;
 import eu.berrytopia.arbor.geoobject.GeoObject;

@@ -21,7 +21,7 @@ public class ArborUser {
     private String email;
 
 
-    @ManyToOne //owning Side
+    @ManyToOne(cascade = CascadeType.ALL) //owning Side
     private Organisation organisation = new Organisation();
 
 

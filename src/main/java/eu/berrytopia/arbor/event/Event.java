@@ -1,6 +1,6 @@
-package eu.berrytopia.arbor.arboruser.event;
+package eu.berrytopia.arbor.event;
 
-import eu.berrytopia.arbor.arboruser.media.Media;
+import eu.berrytopia.arbor.media.Media;
 import eu.berrytopia.arbor.geoobject.GeoObject;
 
 import javax.persistence.CascadeType;

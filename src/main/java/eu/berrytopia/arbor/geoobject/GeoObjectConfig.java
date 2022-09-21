@@ -1,3 +1,4 @@
+/*
 package eu.berrytopia.arbor.geoobject;
 
 import eu.berrytopia.arbor.arboruser.ArborUser;
@@ -39,3 +40,4 @@ public class GeoObjectConfig {
         };
     }
 }
+*/

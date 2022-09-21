@@ -1,3 +1,4 @@
+/*
 package eu.berrytopia.arbor.organisation;
 
 import eu.berrytopia.arbor.arboruser.ArborUser;
@@ -17,3 +18,4 @@ public class OrganisationConfig {
         };
     }
 }
+*/

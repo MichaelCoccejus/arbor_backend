@@ -1,3 +1,4 @@
+/*
 package eu.berrytopia.arbor.gpsPosition;
 
 import eu.berrytopia.arbor.gpsPosition.GpsPosition;
@@ -27,3 +28,4 @@ public class GpsPositionConfig {
 
 
 }
+*/

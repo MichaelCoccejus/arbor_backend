@@ -1,3 +1,4 @@
+/*
 package eu.berrytopia.arbor.tree;
 
 import eu.berrytopia.arbor.gpsPosition.GpsPosition;
@@ -22,3 +23,4 @@ public class TreeConfig {
 
 
 }
+*/

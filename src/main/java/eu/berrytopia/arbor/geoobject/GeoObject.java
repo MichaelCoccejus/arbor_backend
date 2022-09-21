@@ -1,6 +1,6 @@
 package eu.berrytopia.arbor.geoobject;
 
-import eu.berrytopia.arbor.arboruser.event.Event;
+import eu.berrytopia.arbor.event.Event;
 import eu.berrytopia.arbor.gpsPosition.GpsPosition;
 import eu.berrytopia.arbor.organisation.Organisation;
 import lombok.Getter;
