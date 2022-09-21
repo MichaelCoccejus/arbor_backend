@@ -20,7 +20,7 @@ public class GeoObject {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Organisation organisation;
 
     private String type;

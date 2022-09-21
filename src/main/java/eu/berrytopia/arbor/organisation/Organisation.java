@@ -1,6 +1,7 @@
 package eu.berrytopia.arbor.organisation;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import eu.berrytopia.arbor.arboruser.ArborUser;
 import eu.berrytopia.arbor.geoobject.GeoObject;
 import lombok.Getter;
@@ -21,9 +22,11 @@ public class Organisation {
 
     private String name;
 
+    @JsonIgnoreProperties("organisation")
     @OneToMany(mappedBy = "organisation", cascade = CascadeType.ALL) //owning side is ArborUsers
     private Set<ArborUser> arborUsers = new HashSet<>();
 
+    @JsonIgnoreProperties("organisation")
     @OneToMany(mappedBy = "organisation", cascade = CascadeType.ALL) //owning side is GeoObjects
     private Set<GeoObject> geoObjects = new HashSet<>();
 

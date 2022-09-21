@@ -3,9 +3,11 @@ package eu.berrytopia.arbor.config;
 import eu.berrytopia.arbor.arboruser.ArborUser;
 import eu.berrytopia.arbor.arboruser.ArborUserRepository;
 import eu.berrytopia.arbor.geoobject.GeoObjectRepository;
+import eu.berrytopia.arbor.gpsPosition.GpsPosition;
 import eu.berrytopia.arbor.gpsPosition.GpsPositionRepository;
 import eu.berrytopia.arbor.organisation.Organisation;
 import eu.berrytopia.arbor.organisation.OrganisationRepository;
+import eu.berrytopia.arbor.tree.Tree;
 import eu.berrytopia.arbor.tree.TreeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Component
@@ -46,12 +49,15 @@ public class InitializeDB {
         Organisation organisation = new Organisation();
         organisation.setName("Arbor");
         organisation.setArborUsers(Set.of(arborUser));
-
-
         arborUser.setOrganisation(organisation);
 
         arborUserRepository.save(arborUser);
         organisationRepository.save(organisation);
+
+        Tree tree = new Tree(organisation,"Morus","Morus Alba","User Description",new GpsPosition(13,31,1), null,LocalDate.of(2000,01,21));
+        treeRepository.save(tree);
+        organisationRepository.save(organisation);
+
 
 
 

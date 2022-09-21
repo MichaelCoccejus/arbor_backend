@@ -44,6 +44,7 @@ public class Tree extends GeoObject {
     }
 
     public Tree(){
+        super();
     }
 }
 

@@ -1,5 +1,6 @@
 package eu.berrytopia.arbor.arboruser;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import eu.berrytopia.arbor.organisation.Organisation;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class ArborUser {
     private String email;
 
 
+    @JsonIgnoreProperties("arborUsers")
     @ManyToOne(cascade = CascadeType.ALL) //owning Side
     private Organisation organisation = new Organisation();
 
