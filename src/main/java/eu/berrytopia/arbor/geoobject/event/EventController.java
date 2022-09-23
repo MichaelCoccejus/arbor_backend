@@ -27,6 +27,4 @@ public class EventController {
     public void addEvent(@RequestBody Event event) {
         eventService.addEvent(event);
     }
-
-
 }

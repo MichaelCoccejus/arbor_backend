@@ -20,6 +20,7 @@ public class ArborUserService {
         if (arborUserOptional.isPresent()){
             throw new IllegalStateException("Nickname is taken.");
         }
+
         arborUserRepository.save(arborUser);
     }
 

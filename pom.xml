@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>eu.berrytopia</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>arbor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>arbor</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Arbor project</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
