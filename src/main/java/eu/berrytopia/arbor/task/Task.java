@@ -3,6 +3,7 @@ package eu.berrytopia.arbor.task;
 import eu.berrytopia.arbor.arboruser.ArborUser;
 import eu.berrytopia.arbor.geoobject.GeoObject;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Task extends GeoObject {
 
 
@@ -20,8 +22,8 @@ public class Task extends GeoObject {
     private Date startTime;
     private Date endTime;
 
-    private List<ArborUser> relatedUsers;
-    private List<GeoObject> relatedGeoObjects;
+
+
 
     public Task() {
     }

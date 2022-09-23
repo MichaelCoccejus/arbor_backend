@@ -1,11 +1,14 @@
 package eu.berrytopia.arbor.arboruser;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import eu.berrytopia.arbor.geoobject.GeoObject;
 import eu.berrytopia.arbor.organisation.Organisation;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,6 +28,10 @@ public class ArborUser {
     @JsonIgnoreProperties("arborUsers")
     @ManyToOne(cascade = CascadeType.ALL) //owning Side
     private Organisation organisation = new Organisation();
+
+    @JsonIgnoreProperties("relatedUsers")
+    @ManyToMany
+    private Set<GeoObject> geoObjects = new HashSet<>();
 
 
     public ArborUser() {

@@ -7,6 +7,8 @@ import eu.berrytopia.arbor.gpsPosition.GpsPosition;
 import eu.berrytopia.arbor.gpsPosition.GpsPositionRepository;
 import eu.berrytopia.arbor.organisation.Organisation;
 import eu.berrytopia.arbor.organisation.OrganisationRepository;
+import eu.berrytopia.arbor.task.Task;
+import eu.berrytopia.arbor.task.TaskRepository;
 import eu.berrytopia.arbor.tree.Tree;
 import eu.berrytopia.arbor.tree.TreeRepository;
 import org.slf4j.Logger;
@@ -38,6 +40,9 @@ public class InitializeDB {
     @Autowired
     TreeRepository treeRepository;
 
+    @Autowired
+    TaskRepository taskRepository;
+
 
     @PostConstruct
     public void init()  {
@@ -56,10 +61,17 @@ public class InitializeDB {
 
         Tree tree = new Tree(organisation,"Morus","Morus Alba","User Description",new GpsPosition(13,31,1), null,LocalDate.of(2000,01,21));
         treeRepository.save(tree);
+
+
+        Task task = new Task();
+        task.setName("Make Arbor bigger");
+        task.setOrganisation(organisation);
+
+
+
+
+        taskRepository.save(task);
         organisationRepository.save(organisation);
-
-
-
 
     }
 

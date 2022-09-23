@@ -1,5 +1,8 @@
 package eu.berrytopia.arbor.geoobject;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import eu.berrytopia.arbor.arboruser.ArborUser;
 import eu.berrytopia.arbor.event.Event;
 import eu.berrytopia.arbor.gpsPosition.GpsPosition;
 import eu.berrytopia.arbor.organisation.Organisation;
@@ -9,25 +12,44 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-public class GeoObject {
+public class GeoObject implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE)
     private Organisation organisation;
+
+    @Transient
+    private Long organisationId;
+
+    public Long getOrganisationId() {
+        return this.organisation.getId();
+    }
 
     private String type;
 
     private String name;
 
     private String userDescription;
+
+    @ManyToMany(mappedBy = "geoObjects")
+    @JsonIgnoreProperties("geoObjects")
+    private Set<ArborUser> relatedUsers = new HashSet<>();
+
+    @OneToMany
+    @JsonIgnoreProperties("relatedGeoObjects")
+    private Set<GeoObject> relatedGeoObjects = new HashSet();
+
 
     @OneToOne(mappedBy = "geoObject",cascade = CascadeType.ALL)
     private GpsPosition gpsPosition;
@@ -51,5 +73,6 @@ public class GeoObject {
     }
 
     public GeoObject() {
+        this.createdTime = new Timestamp(System.currentTimeMillis());
     }
 }

@@ -1,3 +1,4 @@
+/*
 package eu.berrytopia.arbor.arboruser;
 
 import org.springframework.boot.CommandLineRunner;
@@ -12,3 +13,4 @@ public class ArborUserConfig {
         return args -> {};
     }
 }
+*/
