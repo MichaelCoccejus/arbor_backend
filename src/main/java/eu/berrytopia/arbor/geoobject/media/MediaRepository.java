@@ -1,6 +1,6 @@
-package eu.berrytopia.arbor.media;
+package eu.berrytopia.arbor.geoobject.media;
 
-import eu.berrytopia.arbor.event.Event;
+import eu.berrytopia.arbor.geoobject.event.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

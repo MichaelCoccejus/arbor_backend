@@ -27,11 +27,11 @@ public class ArborUser {
 
     @JsonIgnoreProperties("arborUsers")
     @ManyToOne(cascade = CascadeType.ALL) //owning Side
-    private Organisation organisation = new Organisation();
+    private Organisation organisation;
 
     @JsonIgnoreProperties("relatedUsers")
-    @ManyToMany
-    private Set<GeoObject> geoObjects = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<GeoObject> geoObjects;
 
 
     public ArborUser() {

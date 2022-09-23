@@ -3,7 +3,7 @@ package eu.berrytopia.arbor.geoobject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import eu.berrytopia.arbor.arboruser.ArborUser;
-import eu.berrytopia.arbor.event.Event;
+import eu.berrytopia.arbor.geoobject.event.Event;
 import eu.berrytopia.arbor.gpsPosition.GpsPosition;
 import eu.berrytopia.arbor.organisation.Organisation;
 import lombok.Getter;
@@ -19,11 +19,15 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class GeoObject implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Enumerated(value = EnumType.STRING)
+    private GeoObjectType type;
 
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -32,11 +36,11 @@ public class GeoObject implements java.io.Serializable {
     @Transient
     private Long organisationId;
 
+
+
     public Long getOrganisationId() {
         return this.organisation.getId();
     }
-
-    private String type;
 
     private String name;
 
@@ -46,10 +50,9 @@ public class GeoObject implements java.io.Serializable {
     @JsonIgnoreProperties("geoObjects")
     private Set<ArborUser> relatedUsers = new HashSet<>();
 
-    @OneToMany
+    @ManyToMany
     @JsonIgnoreProperties("relatedGeoObjects")
     private Set<GeoObject> relatedGeoObjects = new HashSet();
-
 
     @OneToOne(mappedBy = "geoObject",cascade = CascadeType.ALL)
     private GpsPosition gpsPosition;
@@ -57,22 +60,31 @@ public class GeoObject implements java.io.Serializable {
     @OneToMany(mappedBy = "geoObject", cascade = CascadeType.ALL)
     private List<GpsPosition> area = new ArrayList<>();
 
-    @OneToMany(mappedBy = "geoObject", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Event> events = new ArrayList<>();
     private Timestamp createdTime;
 
 
-    public GeoObject(Organisation organisation,String type, String name, String userDescription, GpsPosition gpsPosition, List<GpsPosition> area) {
-        this.organisation = organisation;
-        this.type = type;
-        this.name = name;
-        this.userDescription = userDescription;
-        this.gpsPosition = gpsPosition;
-        this.area = area;
-        this.createdTime = new Timestamp(System.currentTimeMillis());
-    }
-
     public GeoObject() {
         this.createdTime = new Timestamp(System.currentTimeMillis());
     }
+    public GeoObject(GeoObjectType type) {
+        this.type = type;
+        this.createdTime = new Timestamp(System.currentTimeMillis());
+    }
+
+    public GeoObject(GeoObjectType type, Organisation organisation, String name, String userDescription, Set<ArborUser> relatedUsers,
+                     Set<GeoObject> relatedGeoObjects, GpsPosition gpsPosition, List<GpsPosition> area, List<Event> events) {
+        this.type = type;
+        this.organisation = organisation;
+        this.name = name;
+        this.userDescription = userDescription;
+        this.relatedUsers = relatedUsers;
+        this.relatedGeoObjects = relatedGeoObjects;
+        this.gpsPosition = gpsPosition;
+        this.area = area;
+        this.events = events;
+        this.createdTime = new Timestamp(System.currentTimeMillis());
+    }
+
 }

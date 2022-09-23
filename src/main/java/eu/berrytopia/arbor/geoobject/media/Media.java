@@ -1,6 +1,8 @@
-package eu.berrytopia.arbor.media;
+package eu.berrytopia.arbor.geoobject.media;
 
-import eu.berrytopia.arbor.event.Event;
+import eu.berrytopia.arbor.arboruser.ArborUser;
+import eu.berrytopia.arbor.geoobject.GeoObjectType;
+import eu.berrytopia.arbor.geoobject.event.Event;
 import eu.berrytopia.arbor.geoobject.GeoObject;
 import eu.berrytopia.arbor.gpsPosition.GpsPosition;
 import eu.berrytopia.arbor.organisation.Organisation;
@@ -11,6 +13,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -23,8 +26,8 @@ public class Media extends GeoObject {
     @ManyToOne(cascade = CascadeType.ALL) //owning side
     private Event event;
 
-    public Media(Organisation organisation, String type, String name, String userDescription, GpsPosition gpsPosition, List<GpsPosition> area, String previewUri, String fullUri, Event event) {
-        super(organisation, type, name, userDescription, gpsPosition, area);
+    public Media(Organisation organisation, String name, String userDescription, Set<ArborUser> relatedUsers, Set<GeoObject> relatedGeoObjects, GpsPosition gpsPosition, List<GpsPosition> area, List<Event> events, String previewUri, String fullUri, Event event) {
+        super(GeoObjectType.MEDIA, organisation, name, userDescription, relatedUsers, relatedGeoObjects, gpsPosition, area, events);
         this.previewUri = previewUri;
         this.fullUri = fullUri;
         this.event = event;

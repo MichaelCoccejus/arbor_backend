@@ -1,4 +1,4 @@
-package eu.berrytopia.arbor.tree;
+package eu.berrytopia.arbor.geoobject.tree;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -1,4 +1,4 @@
-package eu.berrytopia.arbor.task;
+package eu.berrytopia.arbor.geoobject.task;
 
 import org.springframework.stereotype.Component;
 

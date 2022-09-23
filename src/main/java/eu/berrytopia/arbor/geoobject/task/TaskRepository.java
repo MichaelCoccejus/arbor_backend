@@ -1,8 +1,8 @@
-package eu.berrytopia.arbor.event;
+package eu.berrytopia.arbor.geoobject.task;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EventRepository extends JpaRepository<Event,Long> {
+public interface TaskRepository extends JpaRepository<Task,Long> {
 }
