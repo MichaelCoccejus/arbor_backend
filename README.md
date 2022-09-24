@@ -55,20 +55,21 @@ Sehr ähnliche Funktionalitäten
 
 
 ## Api Beschreibung
+###/*********************************************** Organisation ***********************************************/
+###Organisation hinzufügen
 
-/*********************************************** Organisation ***********************************************/
-//Organisation hinzufügen
+```JSON
 {
-"name": "Organisation Name"
+    "name": "Organisation Name"
 }
+```
 
 
-
-// mit User
-
+####mit User
+```JSON
 {
-"name": "Organisation Name",
-"users" :[
+    "name": "Organisation Name",
+    "users" :[
 
         {
             "firstName": "admin@arbor.eu",
@@ -84,111 +85,113 @@ Sehr ähnliche Funktionalitäten
         }
     ]
 }
+```
 
 
 
-
-//arbor.berrytopia.eu:8080/api/v1/organisations
-
+###GET arbor.berrytopia.eu:8080/api/v1/organisations
+```JSON
 [
-{
-"id": 1,
-"name": "ArborOrganisation",
-"arborUsers": [
-{
-"id": 3,
-"firstName": "Hans",
-"lastName": "Peter",
-"nickname": "Hansi",
-"email": "Hansi@peter.de",
-"geoObjects": []
-},
-{
-"id": 2,
-"firstName": "Max",
-"lastName": "Mustermann",
-"nickname": "maxi",
-"email": null,
-"geoObjects": []
-}
-],
-"geoObjects": [
-{
-"id": 4,
-"type": "TASK",
-"organisationId": 1,
-"name": "Make Arbor bigger",
-"userDescription": null,
-"relatedUsers": [],
-"relatedGeoObjects": [],
-"gpsPosition": null,
-"area": [],
-"events": [],
-"createdTime": "2022-09-24T11:30:53.586+00:00"
-},
-{
-"id": 5,
-"type": "EVENT",
-"organisationId": 1,
-"name": "DemoEvent",
-"userDescription": null,
-"relatedUsers": [],
-"relatedGeoObjects": [],
-"gpsPosition": null,
-"area": [],
-"events": [],
-"createdTime": "2022-09-24T11:30:53.586+00:00",
-"eventType": null,
-"mediaItems": []
-}
+    {
+        "id": 1,
+        "name": "ArborOrganisation",
+        "arborUsers": [
+            {
+                "id": 3,
+                "firstName": "Hans",
+                "lastName": "Peter",
+                "nickname": "Hansi",
+                "email": "Hansi@peter.de",
+                "geoObjects": []
+            },
+            {
+                "id": 2,
+                "firstName": "Max",
+                "lastName": "Mustermann",
+                "nickname": "maxi",
+                "email": null,
+                "geoObjects": []
+            }
+        ],
+        "geoObjects": [
+            {
+                "id": 4,
+                "type": "TASK",
+                "organisationId": 1,
+                "name": "Make Arbor bigger",
+                "userDescription": null,
+                "relatedUsers": [],
+                "relatedGeoObjects": [],
+                "gpsPosition": null,
+                "area": [],
+                "events": [],
+                "createdTime": "2022-09-24T11:30:53.586+00:00"
+            },
+            {
+                "id": 5,
+                "type": "EVENT",
+                "organisationId": 1,
+                "name": "DemoEvent",
+                "userDescription": null,
+                "relatedUsers": [],
+                "relatedGeoObjects": [],
+                "gpsPosition": null,
+                "area": [],
+                "events": [],
+                "createdTime": "2022-09-24T11:30:53.586+00:00",
+                "eventType": null,
+                "mediaItems": []
+            }
+        ]
+    }
 ]
-}
-]
+```
 
 
 
+### /*********************************************** ArborUser ***********************************************/
 
-
-/*********************************************** ArborUser ***********************************************/
-
-// POST arbor.berrytopia.eu:8080/api/v1/users
-
+### POST arbor.berrytopia.eu:8080/api/v1/users
+```JSON
 {       "firstName": "Biene",
-"lastName": "Maja",
-"nickname": "Bienchen",
-"email": "biene@maja.de"
+        "lastName": "Maja",
+        "nickname": "Bienchen",
+        "email": "biene@maja.de"
 }
+```
 
-
-// GET  arbor.berrytopia.eu:8080/api/v1/users
-
+### GET  arbor.berrytopia.eu:8080/api/v1/users
+```JSON
 [
-{
-"id": 1,
-"firstName": "Biene",
-"lastName": "Maja",
-"nickname": "Bienchen",
-"email": "biene@maja.de",
-"organisation": null,
-"geoObjects": []
-}
+    {
+        "id": 1,
+        "firstName": "Biene",
+        "lastName": "Maja",
+        "nickname": "Bienchen",
+        "email": "biene@maja.de",
+        "organisation": null,
+        "geoObjects": []
+    }
 ]
+```
 
-// GET mit ID arbor.berrytopia.eu:8080/api/v1/users/1
+### GET mit ID arbor.berrytopia.eu:8080/api/v1/users/1
 
+```JSON
 {
-"id": 2,
-"firstName": "Hans",
-"lastName": "Peter",
-"nickname": "Hansi",
-"email": "Hansi@peter.de",
-"geoObjects": []
+    "id": 2,
+    "firstName": "Hans",
+    "lastName": "Peter",
+    "nickname": "Hansi",
+    "email": "Hansi@peter.de",
+    "geoObjects": []
 }
-
-// DELETE mit ID arbor.berrytopia.eu:8080/api/v1/users/1
+```
+### DELETE mit ID arbor.berrytopia.eu:8080/api/v1/users/1
 
 // Update User mit als JSON
-// PUT arbor.berrytopia.eu:8080/api/v1/users
+### PUT arbor.berrytopia.eu:8080/api/v1/users
+```J́SON
 {
 "id": 1,
 "firstName": "Biene",
@@ -198,5 +201,7 @@ Sehr ähnliche Funktionalitäten
 "organisation": null,
 "geoObjects": []
 }
+```
+
 
 
