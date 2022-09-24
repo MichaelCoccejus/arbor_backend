@@ -1,5 +1,8 @@
 package eu.berrytopia.arbor.arboruser;
 
+import eu.berrytopia.arbor.organisation.Organisation;
+import eu.berrytopia.arbor.organisation.OrganisationRepository;
+import eu.berrytopia.arbor.organisation.OrganisationService;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -10,8 +13,14 @@ import java.util.Optional;
 public class ArborUserService {
 
     private final ArborUserRepository arborUserRepository;
+    private final OrganisationRepository organisationRepository;
 
-    public ArborUserService(ArborUserRepository arborUserRepository) { this.arborUserRepository = arborUserRepository; }
+
+
+    public ArborUserService(ArborUserRepository arborUserRepository, OrganisationRepository organisationRepository) {
+        this.arborUserRepository = arborUserRepository;
+        this.organisationRepository = organisationRepository;
+    }
 
     public List<ArborUser> getArborUsers() { return arborUserRepository.findAll(); }
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 @Component
 public class OrganisationService {
@@ -22,22 +23,34 @@ public class OrganisationService {
 
     public List<Organisation> getOrganisations() { return organisationRepository.findAll(); }
 
-    public void addNewOrganisation(Organisation organisation, List<ArborUser> arborUserList) {
+    public Long addNewOrganisation(Organisation organisation) {
         Optional<Organisation> organisationOptional = organisationRepository.findOrganisationByName(organisation.getName());
         if (organisationOptional.isPresent()){
             throw new IllegalStateException("Organisation Name is taken.");
         }
 
-        arborUserList.forEach( arborUser -> arborUserService.addNewArborUser(arborUser));
+        Set<ArborUser> arborUserSet = organisation.getArborUsers();
+        if(!arborUserSet.isEmpty()) {
+            arborUserSet.forEach(arborUserService::addNewArborUser);
+        }
+
         organisationRepository.save(organisation);
 
+        return 1l; //To Do: return ID of new Organisation
     }
 
     public void deleteOrganisation(Long organisationId) {
-        boolean exists = organisationRepository.existsById(organisationId);
+
+        Optional<Organisation> organisationOptional = organisationRepository.findById(organisationId);
+
+        boolean exists = organisationOptional.isPresent();
         if(!exists) {
             throw new IllegalStateException("Organisation with ID " + organisationId + "does not exist.");
         }
+        Organisation organisation = organisationOptional.get();
+        organisation.getArborUsers().forEach( arborUser -> {
+                arborUserService.deleteArborUser(arborUser.getId());
+        });
         organisationRepository.deleteById(organisationId);
     }
 

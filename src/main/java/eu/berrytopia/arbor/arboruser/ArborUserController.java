@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static eu.berrytopia.arbor.config.Config.requestMappingPath;
+
 @RestController
-@RequestMapping(path = "api/v1/users")
+@RequestMapping(path = requestMappingPath + "users")
 public class ArborUserController {
 
     private final ArborUserService arborUserService;
