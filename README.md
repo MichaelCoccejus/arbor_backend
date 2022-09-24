@@ -58,6 +58,10 @@ Sehr ähnliche Funktionalitäten
 ###/*********************************************** Organisation ***********************************************/
 ###Organisation hinzufügen
 
+```
+PUT arbor.berrytopia.eu:8080/api/v1/organisations/
+```
+
 ```JSON
 {
     "name": "Organisation Name"
@@ -84,6 +88,22 @@ Sehr ähnliche Funktionalitäten
             "email": "HansP@peter.de"
         }
     ]
+}
+```
+
+###Organisation löschen
+```
+DELETE arbor.berrytopia.eu:8080/api/v1/organisations/{id}
+```
+
+###Update Organisation
+```
+POST arbor.berrytopia.eu:8080/api/v1/organisations/
+```
+```JSON
+{
+    "id": 1,
+    "name": "Organisation Name"
 }
 ```
 
@@ -193,15 +213,17 @@ Sehr ähnliche Funktionalitäten
 ### PUT arbor.berrytopia.eu:8080/api/v1/users
 ```J́SON
 {
-"id": 1,
-"firstName": "Biene",
-"lastName": "Maja",
-"nickname": "Bienchen",
-"email": "biene@maja.de",
-"organisation": null,
-"geoObjects": []
+    "id": 1,
+    "firstName": "Biene",
+    "lastName": "Maja",
+    "nickname": "Bienchen",
+    "email": "biene@maja.de",
+    "organisation": null,
+    "geoObjects": []
 }
 ```
+
+
 
 
 
