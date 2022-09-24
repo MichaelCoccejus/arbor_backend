@@ -22,6 +22,13 @@ public class TreeController {
         return treeService.getTrees();
     }
 
+    @GetMapping(path = "{treeId}")
+    public Tree getTree(@PathVariable("treeId") Long treeId) {
+       return  treeService.getTree(treeId);
+    }
+
+
+
     @PostMapping
     public void registerNewTree(@RequestBody Tree tree){
         treeService.addNewTree(tree);
@@ -32,12 +39,16 @@ public class TreeController {
         treeService.deleteTree(treeId);
     }
 
-    @PutMapping(path = "{treeId}")
+   /* @PutMapping(path = "{treeId}")
     public void updateTree(
             @PathVariable("treeId") Long treeId,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) LocalDate plantedDate) {
         treeService.updateTree(treeId, name, plantedDate);
 
+    }*/
+    @PutMapping
+    public void updateTree(@RequestBody Tree tree){
+        treeService.updateTree(tree);
     }
 }

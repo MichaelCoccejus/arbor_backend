@@ -22,6 +22,16 @@ public class TreeService {
        return treeRepository.findAll();
     }
 
+    public Tree getTree(Long treeId) {
+        Optional<Tree> treeOptional = treeRepository.findById(treeId);
+
+        if(!treeOptional.isPresent()) {
+            throw new IllegalStateException("Tree with ID " + treeId + " does not exist.");
+        }
+
+        return treeOptional.get();
+    }
+
     public void addNewTree(Tree tree) {
         Optional<Tree> treeOptional = treeRepository.findTreeByName(tree.getName());
         if (treeOptional.isPresent()){
@@ -39,16 +49,11 @@ public class TreeService {
        treeRepository.deleteById(treeId);
     }
 
-
-    @Transactional
-    public void updateTree(Long treeId, String name, LocalDate plantedDate) {
-        Tree tree = treeRepository.findById(treeId).orElseThrow(() -> new IllegalStateException(
-                "Tree with ID " + treeId + " does not exist."
-        ));
-
-        if (name != null && name.length() > 0 && !Objects.equals(tree.getName(), name)) {
-
-            tree.setName(name);
+    public void updateTree(Tree tree) {
+        Optional<Tree> treeOptional = treeRepository.findById(tree.getId());
+        if (!treeOptional.isPresent()) {
+            throw new IllegalStateException("Tree with ID " + tree.getId() + "does not exist.");
         }
+        treeRepository.save(tree);
     }
 }
