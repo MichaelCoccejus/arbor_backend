@@ -19,6 +19,11 @@ public class ArborUserController {
     @GetMapping
     public List<ArborUser> getArborUsers() { return arborUserService.getArborUsers(); }
 
+    @GetMapping(path = "{userId}")
+    public ArborUser getArborUser(@PathVariable("userId") Long userId){
+        return arborUserService.getArborUser(userId);
+    }
+
     @PostMapping
     public void addNewUser(@RequestBody ArborUser arborUser) { arborUserService.addNewArborUser(arborUser); }
 
@@ -28,4 +33,7 @@ public class ArborUserController {
     @PutMapping
     public void updateUser(@RequestBody ArborUser arborUser) { arborUserService.updateArborUser(arborUser);
     }
+
+
+
 }

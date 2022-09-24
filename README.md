@@ -52,3 +52,151 @@ Die Liste ist nur eine einfache Grundlage (und meine Intepretation was man einf�
 ## (Optional) Webanwendung
 
 Sehr ähnliche Funktionalitäten
+
+
+## Api Beschreibung
+
+/*********************************************** Organisation ***********************************************/
+//Organisation hinzufügen
+{
+"name": "Organisation Name"
+}
+
+
+
+// mit User
+
+{
+"name": "Organisation Name",
+"users" :[
+
+        {
+            "firstName": "admin@arbor.eu",
+            "lastName": "Lastname",
+            "nickname": "admin",
+            "email": "admin@arbor.eu"
+        },
+        {
+            "firstName": "Hans",
+            "lastName": "Peter",
+            "nickname": "HansP",
+            "email": "HansP@peter.de"
+        }
+    ]
+}
+
+
+
+
+//arbor.berrytopia.eu:8080/api/v1/organisations
+
+[
+{
+"id": 1,
+"name": "ArborOrganisation",
+"arborUsers": [
+{
+"id": 3,
+"firstName": "Hans",
+"lastName": "Peter",
+"nickname": "Hansi",
+"email": "Hansi@peter.de",
+"geoObjects": []
+},
+{
+"id": 2,
+"firstName": "Max",
+"lastName": "Mustermann",
+"nickname": "maxi",
+"email": null,
+"geoObjects": []
+}
+],
+"geoObjects": [
+{
+"id": 4,
+"type": "TASK",
+"organisationId": 1,
+"name": "Make Arbor bigger",
+"userDescription": null,
+"relatedUsers": [],
+"relatedGeoObjects": [],
+"gpsPosition": null,
+"area": [],
+"events": [],
+"createdTime": "2022-09-24T11:30:53.586+00:00"
+},
+{
+"id": 5,
+"type": "EVENT",
+"organisationId": 1,
+"name": "DemoEvent",
+"userDescription": null,
+"relatedUsers": [],
+"relatedGeoObjects": [],
+"gpsPosition": null,
+"area": [],
+"events": [],
+"createdTime": "2022-09-24T11:30:53.586+00:00",
+"eventType": null,
+"mediaItems": []
+}
+]
+}
+]
+
+
+
+
+
+/*********************************************** ArborUser ***********************************************/
+
+// POST arbor.berrytopia.eu:8080/api/v1/users
+
+{       "firstName": "Biene",
+"lastName": "Maja",
+"nickname": "Bienchen",
+"email": "biene@maja.de"
+}
+
+
+// GET  arbor.berrytopia.eu:8080/api/v1/users
+
+[
+{
+"id": 1,
+"firstName": "Biene",
+"lastName": "Maja",
+"nickname": "Bienchen",
+"email": "biene@maja.de",
+"organisation": null,
+"geoObjects": []
+}
+]
+
+// GET mit ID arbor.berrytopia.eu:8080/api/v1/users/1
+
+{
+"id": 2,
+"firstName": "Hans",
+"lastName": "Peter",
+"nickname": "Hansi",
+"email": "Hansi@peter.de",
+"geoObjects": []
+}
+
+// DELETE mit ID arbor.berrytopia.eu:8080/api/v1/users/1
+
+// Update User mit als JSON
+// PUT arbor.berrytopia.eu:8080/api/v1/users
+{
+"id": 1,
+"firstName": "Biene",
+"lastName": "Maja",
+"nickname": "Bienchen",
+"email": "biene@maja.de",
+"organisation": null,
+"geoObjects": []
+}
+
+

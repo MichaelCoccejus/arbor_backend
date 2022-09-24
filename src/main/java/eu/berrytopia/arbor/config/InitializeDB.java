@@ -53,7 +53,7 @@ public class InitializeDB {
 
     @PostConstruct
     public void init()  {
-       /* ArborUser maxi = new ArborUser();
+       ArborUser maxi = new ArborUser();
         maxi.setFirstName("Max");
         maxi.setLastName("Mustermann");
         maxi.setNickname("maxi");
@@ -78,7 +78,7 @@ public class InitializeDB {
         event.setName("DemoEvent");
         event.setRelatedUsers(Set.of(maxi,hansi));
 
-     *//*   Tree tree = new Tree(
+      Tree tree = new Tree(
                 organisation,
                 "Morus Alba",
                 "Trägt weiße Früchte",
@@ -89,7 +89,7 @@ public class InitializeDB {
                null,
                 LocalDate.of(2000,01,21)
         );
-*//*
+
 
 
 
@@ -100,8 +100,8 @@ public class InitializeDB {
         arborUserRepository.save(maxi);
         arborUserRepository.save(hansi);
         eventRepository.save(event);
-        //treeRepository.save(tree);
-        taskRepository.save(task);*/
+        treeRepository.save(tree);
+        taskRepository.save(task);
 
 
     }

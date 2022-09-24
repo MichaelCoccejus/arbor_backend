@@ -31,7 +31,7 @@ public class OrganisationService {
 
         Set<ArborUser> arborUserSet = organisation.getArborUsers();
         if(!arborUserSet.isEmpty()) {
-            arborUserSet.forEach(arborUserService::addNewArborUser);
+            arborUserSet.forEach(arborUserService::addNewArborUser); //TO Do: Bug does not work
         }
 
         organisationRepository.save(organisation);

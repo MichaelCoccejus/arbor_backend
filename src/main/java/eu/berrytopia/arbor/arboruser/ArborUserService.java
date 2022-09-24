@@ -24,6 +24,14 @@ public class ArborUserService {
 
     public List<ArborUser> getArborUsers() { return arborUserRepository.findAll(); }
 
+    public ArborUser getArborUser(Long id){
+        Optional<ArborUser> arborUserOptional = arborUserRepository.findById(id);
+        if (!arborUserOptional.isPresent()){
+            throw new IllegalStateException("User with ID " + id + " does not exist");
+        }
+        return arborUserOptional.get();
+    }
+
     public void addNewArborUser(ArborUser arborUser) {
         Optional<ArborUser> arborUserOptional = arborUserRepository.findByNickname(arborUser.getNickname());
         if (arborUserOptional.isPresent()){
