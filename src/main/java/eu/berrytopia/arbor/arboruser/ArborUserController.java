@@ -1,5 +1,6 @@
 package eu.berrytopia.arbor.arboruser;
 
+import eu.berrytopia.arbor.organisation.OrganisationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +14,14 @@ public class ArborUserController {
 
     private final ArborUserService arborUserService;
 
+    private final OrganisationService organisationService;
+   ;
+
     @Autowired
-    public ArborUserController(ArborUserService arborUserService) { this.arborUserService = arborUserService; }
+    public ArborUserController(ArborUserService arborUserService, OrganisationService organisationService) {
+        this.arborUserService = arborUserService;
+        this.organisationService = organisationService;
+    }
 
     @GetMapping
     public List<ArborUser> getArborUsers() { return arborUserService.getArborUsers(); }
@@ -25,7 +32,9 @@ public class ArborUserController {
     }
 
     @PostMapping
-    public void addNewUser(@RequestBody ArborUser arborUser) { arborUserService.addNewArborUser(arborUser); }
+    public void addNewUser(@RequestBody ArborUser arborUser) {
+        //organisationService.addUserToOrganisation(arborUser);
+        arborUserService.addNewArborUser(arborUser); }
 
     @DeleteMapping(path = "{userId}")
     public void deleteUser(@PathVariable("userId") Long userId) { arborUserService.deleteArborUser(userId); }

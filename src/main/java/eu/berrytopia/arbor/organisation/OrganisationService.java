@@ -65,4 +65,15 @@ public class OrganisationService {
         }
 
     }
+
+    /*public void addUserToOrganisation(ArborUser arborUser){
+        Long organisationId = arborUser.getOrganisation().getId();
+        Optional<Organisation> organisationOptional = organisationRepository.findById(organisationId);
+        if (!organisationOptional.isPresent()){
+            throw new IllegalStateException("Organisation with ID " + organisationId + " does not exist");
+        }
+        Organisation organisation = organisationOptional.get();
+        organisation.setArborUsers(Set.of(arborUser));
+        organisationRepository.save(organisation);
+    }*/
 }

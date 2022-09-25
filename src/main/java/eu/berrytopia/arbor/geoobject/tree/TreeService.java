@@ -1,5 +1,6 @@
 package eu.berrytopia.arbor.geoobject.tree;
 
+import eu.berrytopia.arbor.organisation.Organisation;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -54,6 +55,11 @@ public class TreeService {
         if (!treeOptional.isPresent()) {
             throw new IllegalStateException("Tree with ID " + tree.getId() + "does not exist.");
         }
-        treeRepository.save(tree);
+        Tree oldTree = treeOptional.get();
+        oldTree.setName(tree.getName());
+        oldTree.setPlantedDate(tree.getPlantedDate());
+        oldTree.setUserDescription(tree.getUserDescription());
+
+        treeRepository.save(oldTree);
     }
 }

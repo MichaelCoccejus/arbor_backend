@@ -30,7 +30,7 @@ public class GeoObject implements java.io.Serializable {
     private GeoObjectType type;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     private Organisation organisation;
 
     @Transient
@@ -57,7 +57,7 @@ public class GeoObject implements java.io.Serializable {
     @OneToOne(mappedBy = "geoObject",cascade = CascadeType.ALL)
     private GpsPosition gpsPosition;
 
-    @OneToMany(mappedBy = "geoObject", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "geoObjects", cascade = CascadeType.ALL)
     private List<GpsPosition> area = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)

@@ -27,8 +27,6 @@ public class TreeController {
        return  treeService.getTree(treeId);
     }
 
-
-
     @PostMapping
     public void registerNewTree(@RequestBody Tree tree){
         treeService.addNewTree(tree);

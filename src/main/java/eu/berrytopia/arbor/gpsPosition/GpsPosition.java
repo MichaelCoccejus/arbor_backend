@@ -24,9 +24,11 @@ public class GpsPosition {
     private double latitude;
     private Long altitude;
 
-    @ManyToOne(cascade = CascadeType.ALL) //owning side
+    @OneToOne(cascade = CascadeType.ALL) //owning side
     private GeoObject geoObject;
 
+    @ManyToOne
+    private GeoObject geoObjects;
 
     public GpsPosition(){
     }

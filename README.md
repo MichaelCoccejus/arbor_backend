@@ -176,7 +176,10 @@ POST arbor.berrytopia.eu:8080/api/v1/organisations/
 {       "firstName": "Biene",
         "lastName": "Maja",
         "nickname": "Bienchen",
-        "email": "biene@maja.de"
+        "email": "biene@maja.de",
+        "organisation": {
+           "id": 1
+        }
 }
 ```
 

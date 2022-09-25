@@ -26,7 +26,7 @@ public class ArborUser {
 
 
     @JsonIgnoreProperties("arborUsers")
-    @ManyToOne(cascade = CascadeType.ALL) //owning Side
+    @ManyToOne //owning Side
     private Organisation organisation;
 
     @JsonIgnoreProperties("relatedUsers")
