@@ -2,6 +2,7 @@ package eu.berrytopia.arbor.config;
 
 import eu.berrytopia.arbor.arboruser.ArborUser;
 import eu.berrytopia.arbor.arboruser.ArborUserRepository;
+import eu.berrytopia.arbor.arboruser.ArborUserService;
 import eu.berrytopia.arbor.geoobject.GeoObjectRepository;
 import eu.berrytopia.arbor.geoobject.GeoObjectType;
 import eu.berrytopia.arbor.geoobject.event.Event;
@@ -14,6 +15,7 @@ import eu.berrytopia.arbor.geoobject.task.Task;
 import eu.berrytopia.arbor.geoobject.task.TaskRepository;
 import eu.berrytopia.arbor.geoobject.tree.Tree;
 import eu.berrytopia.arbor.geoobject.tree.TreeRepository;
+import eu.berrytopia.arbor.organisation.OrganisationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Component
@@ -50,10 +53,20 @@ public class InitializeDB {
     @Autowired
     EventRepository eventRepository;
 
-
     @PostConstruct
     public void init()  {
-       ArborUser maxi = new ArborUser();
+
+        Organisation organisation = new Organisation("new Organisation");
+        ArborUser arborUser = new ArborUser("Caja","Cocc","Caja","caja@coccejus");
+
+
+        arborUser.setOrganisation(organisation);
+
+
+        organisationRepository.save(organisation);
+        arborUserRepository.save(arborUser);
+
+       /*ArborUser maxi = new ArborUser();
         maxi.setFirstName("Max");
         maxi.setLastName("Mustermann");
         maxi.setNickname("maxi");
@@ -61,14 +74,14 @@ public class InitializeDB {
         ArborUser hansi = new ArborUser("Hans", "Peter", "Hansi","Hansi@peter.de");
 
 
-
+        String organisationName = "ArborOrganisation";
         Organisation organisation = new Organisation();
-        organisation.setName("ArborOrganisation");
+        organisation.setName(organisationName);
         organisation.setArborUsers(Set.of(maxi,hansi));
         maxi.setOrganisation(organisation);
         hansi.setOrganisation(organisation);
-
-        Task task = new Task();
+        organisationRepository.save(organisation);
+       *//* Task task = new Task();
         task.setName("Make Arbor bigger");
         task.setOrganisation(organisation);
         organisation.setGeoObjects(Set.of(task));
@@ -76,14 +89,17 @@ public class InitializeDB {
         Event event = new Event();
         event.setOrganisation(organisation);
         event.setName("DemoEvent");
-        event.setRelatedUsers(Set.of(maxi,hansi));
+        event.setRelatedUsers(Set.of(maxi,hansi));*//*
 
+
+        Optional<Organisation> organisationOptional = organisationRepository.findOrganisationByName(organisationName);
+        Organisation organisationTree = organisationOptional.get();
       Tree tree = new Tree(
-                organisation,
+                organisationTree,
                 "Morus Alba",
                 "Trägt weiße Früchte",
                 Set.of(hansi),
-                Set.of(task),
+               null,
                 new GpsPosition(23,41,1),
                 null,
                null,
@@ -96,14 +112,13 @@ public class InitializeDB {
 
 
 
-        organisationRepository.save(organisation);
+
         arborUserRepository.save(maxi);
         arborUserRepository.save(hansi);
-        eventRepository.save(event);
+        *//*eventRepository.save(event);
+        taskRepository.save(task);*//*
         treeRepository.save(tree);
-        taskRepository.save(task);
-
-
+*/
     }
 
 

@@ -1,21 +1,22 @@
 package eu.berrytopia.arbor.geoobject.tree;
 
 import eu.berrytopia.arbor.organisation.Organisation;
+import eu.berrytopia.arbor.organisation.OrganisationService;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 @Component
 public class TreeService {
 
     private final TreeRepository treeRepository;
+    private final OrganisationService organisationService;
 
-    public TreeService(TreeRepository treeRepository){
+    public TreeService(TreeRepository treeRepository, OrganisationService organisationService){
         this.treeRepository = treeRepository;
+        this.organisationService = organisationService;
     }
 
 
@@ -38,7 +39,10 @@ public class TreeService {
         if (treeOptional.isPresent()){
             throw new IllegalStateException("Name is taken");
         }
+        Organisation organisation = organisationService.getOrganisationById(tree.getOrganisationId());
+        organisation.setGeoObjects(Set.of(tree));
         treeRepository.save(tree);
+        organisationService.updateOrganisation(organisation);
         //System.out.println(tree);
     }
 

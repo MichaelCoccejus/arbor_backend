@@ -33,6 +33,8 @@ public class ArborUserController {
 
     @PostMapping
     public void addNewUser(@RequestBody ArborUser arborUser) {
+
+        System.out.println("Arbor User Test " + arborUser.toString());
         //organisationService.addUserToOrganisation(arborUser);
         arborUserService.addNewArborUser(arborUser); }
 

@@ -21,6 +21,14 @@ public class OrganisationService {
         this.arborUserService = arborUserService;
     }
 
+    public Organisation getOrganisationById(Long id){
+        Optional<Organisation> organisationOptional = organisationRepository.findById(id);
+        if (!organisationOptional.isPresent()){
+            throw new IllegalStateException("Organisation with ID " + id + " not found.");
+        }
+        return organisationOptional.get();
+    }
+
     public List<Organisation> getOrganisations() { return organisationRepository.findAll(); }
 
     public Long addNewOrganisation(Organisation organisation) {
@@ -55,14 +63,18 @@ public class OrganisationService {
     }
 
     public void updateOrganisation(Organisation organisation){
-        Organisation organisationInRepository = organisationRepository.findById(organisation.getId()).orElseThrow(()-> new IllegalStateException(
+       /* Organisation organisationInRepository = organisationRepository.findById(organisation.getId()).orElseThrow(()-> new IllegalStateException(
                 "Organisation with ID " + organisation.getId() + " does not exist."
         ));
 
         if (organisation.getName() != null && organisation.getName().length() > 0 && !Objects.equals(organisationInRepository.getName(), organisation.getName())) {
 
             organisationInRepository.setName(organisation.getName());
-        }
+            organisationInRepository.setArborUsers(organisation.getArborUsers());
+            organisationRepository.save(organisationInRepository);
+        }*/
+
+        organisationRepository.save(organisation);
 
     }
 

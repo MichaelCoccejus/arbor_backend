@@ -30,7 +30,7 @@ public class GeoObject implements java.io.Serializable {
     private GeoObjectType type;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.REFRESH,CascadeType.MERGE})
     private Organisation organisation;
 
     @Transient

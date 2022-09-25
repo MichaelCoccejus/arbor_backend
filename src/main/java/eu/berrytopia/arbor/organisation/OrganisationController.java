@@ -17,7 +17,7 @@ public class OrganisationController {
     }
 
     @GetMapping
-    public List<Organisation> getOrganisation(){ return organisationService.getOrganisations(); }
+    public List<Organisation> getOrganisations(){ return organisationService.getOrganisations(); }
 
     @PostMapping
     public long addOrganisation(@RequestBody Organisation organisation) { return organisationService.addNewOrganisation(organisation); }
