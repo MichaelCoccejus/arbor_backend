@@ -16,7 +16,7 @@ Das Dokument sollte ein mögliches Grundgerüst für das Projekt bilden und sind
     - [  ] (Optional) Zuletzt bearbeitende Person
     - [  ] Aktiver Befall?
     - [  ] Herkunft
-    - [  ] Aktivität mit 128 Zeichen (?)
+    - [  ] Aktivität mit 128 Zeichen
     - [  ] Datum der letzten Aktivtät
 
 Die Liste ist nur eine einfache Grundlage (und meine Intepretation was man einfügen kann) und sollte keine Voraussetzung für das Projekt sein. Beim Datenaustausch sollte noch kommuniziert werden in welcher Form die Daten geschickt werden bzw. aus welcher Quelle die Bilder kommen und diese mit den Daten verknüpft werden (Ich habe einfach noch kein Plan wie man die Bilder miteinbezieht in einer REST API).
@@ -55,8 +55,8 @@ Sehr ähnliche Funktionalitäten
 
 
 ## Api Beschreibung
-###/*********************************************** Organisation ***********************************************/
-###Organisation hinzufügen
+### /*********************************************** Organisation ***********************************************/
+### Organisation hinzufügen
 
 ```
 PUT arbor.berrytopia.eu:8080/api/v1/organisations/
@@ -69,7 +69,7 @@ PUT arbor.berrytopia.eu:8080/api/v1/organisations/
 ```
 
 
-####mit User
+#### mit User
 ```JSON
 {
     "name": "Organisation Name",
@@ -91,12 +91,12 @@ PUT arbor.berrytopia.eu:8080/api/v1/organisations/
 }
 ```
 
-###Organisation löschen
+### Organisation löschen
 ```
 DELETE arbor.berrytopia.eu:8080/api/v1/organisations/{id}
 ```
 
-###Update Organisation
+### Update Organisation
 ```
 POST arbor.berrytopia.eu:8080/api/v1/organisations/
 ```
@@ -109,7 +109,7 @@ POST arbor.berrytopia.eu:8080/api/v1/organisations/
 
 
 
-###GET arbor.berrytopia.eu:8080/api/v1/organisations
+### GET arbor.berrytopia.eu:8080/api/v1/organisations
 ```JSON
 [
     {
@@ -238,7 +238,7 @@ POST arbor.berrytopia.eu:8080/api/v1/organisations/
     "userDescription": "Traegt Rote Fruechte",
     "plantedDate": "2000-01-21"
 }
-``
+```
 
 
 
