@@ -39,10 +39,10 @@ public class TreeService {
         if (treeOptional.isPresent()){
             throw new IllegalStateException("Name is taken");
         }
-        Organisation organisation = organisationService.getOrganisationById(tree.getOrganisationId());
-        organisation.setGeoObjects(Set.of(tree));
+        // tree.getOrganisation().getId());
+
         treeRepository.save(tree);
-        organisationService.updateOrganisation(organisation);
+        //organisationService.updateOrganisation(organisation);
         //System.out.println(tree);
     }
 

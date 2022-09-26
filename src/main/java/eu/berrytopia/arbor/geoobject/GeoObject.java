@@ -29,8 +29,9 @@ public class GeoObject implements java.io.Serializable {
     @Enumerated(value = EnumType.STRING)
     private GeoObjectType type;
 
-    @JsonIgnore
-    @ManyToOne(cascade={CascadeType.REFRESH,CascadeType.MERGE})
+    //@JsonIgnore
+    //cascade={CascadeType.REFRESH,CascadeType.MERGE})
+    @ManyToOne
     private Organisation organisation;
 
     @Transient
@@ -46,13 +47,13 @@ public class GeoObject implements java.io.Serializable {
 
     private String userDescription;
 
+    //@JsonIgnore
     @ManyToMany(mappedBy = "geoObjects")
-    @JsonIgnoreProperties("geoObjects")
-    private Set<ArborUser> relatedUsers = new HashSet<>();
+    private Set<ArborUser> relatedUsers;
 
     @ManyToMany
-    @JsonIgnoreProperties("relatedGeoObjects")
-    private Set<GeoObject> relatedGeoObjects = new HashSet();
+    //@JsonIgnore
+    private Set<GeoObject> relatedGeoObjects;
 
     @OneToOne(mappedBy = "geoObject",cascade = CascadeType.ALL)
     private GpsPosition gpsPosition;

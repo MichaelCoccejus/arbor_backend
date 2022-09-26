@@ -14,6 +14,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@JsonIgnoreProperties({"geoObjects"})
 public class Organisation {
 
     @Id
@@ -22,11 +23,11 @@ public class Organisation {
 
     private String name;
 
-    @JsonIgnoreProperties("organisation")
+
     @OneToMany(mappedBy = "organisation", cascade = CascadeType.ALL) //owning side is ArborUsers
     private Set<ArborUser> arborUsers = new HashSet<>();
 
-    @JsonIgnoreProperties("organisation")
+
     @OneToMany(mappedBy = "organisation", cascade = CascadeType.ALL) //owning side is GeoObjects
     private Set<GeoObject> geoObjects = new HashSet<>();
 

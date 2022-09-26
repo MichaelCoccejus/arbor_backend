@@ -15,6 +15,7 @@
 	<description>Arbor project</description>
 	<properties>
 		<java.version>11</java.version>
+		<logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="trace"/>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -42,6 +43,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>

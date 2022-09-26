@@ -26,10 +26,6 @@ public class Tree extends GeoObject {
     @Transient
     private Integer age;
 
-
-
-
-
     public int getAge(){
         return Period.between(this.plantedDate,LocalDate.now()).getYears();
     }

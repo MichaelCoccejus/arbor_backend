@@ -63,62 +63,25 @@ public class InitializeDB {
         arborUser.setOrganisation(organisation);
 
 
-        organisationRepository.save(organisation);
-        arborUserRepository.save(arborUser);
-
-       /*ArborUser maxi = new ArborUser();
-        maxi.setFirstName("Max");
-        maxi.setLastName("Mustermann");
-        maxi.setNickname("maxi");
-
-        ArborUser hansi = new ArborUser("Hans", "Peter", "Hansi","Hansi@peter.de");
-
-
-        String organisationName = "ArborOrganisation";
-        Organisation organisation = new Organisation();
-        organisation.setName(organisationName);
-        organisation.setArborUsers(Set.of(maxi,hansi));
-        maxi.setOrganisation(organisation);
-        hansi.setOrganisation(organisation);
-        organisationRepository.save(organisation);
-       *//* Task task = new Task();
-        task.setName("Make Arbor bigger");
-        task.setOrganisation(organisation);
-        organisation.setGeoObjects(Set.of(task));
-
-        Event event = new Event();
-        event.setOrganisation(organisation);
-        event.setName("DemoEvent");
-        event.setRelatedUsers(Set.of(maxi,hansi));*//*
-
-
-        Optional<Organisation> organisationOptional = organisationRepository.findOrganisationByName(organisationName);
-        Organisation organisationTree = organisationOptional.get();
-      Tree tree = new Tree(
-                organisationTree,
-                "Morus Alba",
-                "Trägt weiße Früchte",
-                Set.of(hansi),
-               null,
-                new GpsPosition(23,41,1),
-                null,
-               null,
-                LocalDate.of(2000,01,21)
-        );
 
 
 
 
+      Tree tree = new Tree();
+      tree.setOrganisation(organisation);
+      tree.setName("Morus Alba");
+      tree.setUserDescription("Traegt weiße Fruechte");
+      tree.setPlantedDate(LocalDate.of(2000,01,21));
+      tree.setGpsPosition(new GpsPosition(23,41,1));
 
 
 
+      arborUser.getGeoObjects().add(tree);
 
-        arborUserRepository.save(maxi);
-        arborUserRepository.save(hansi);
-        *//*eventRepository.save(event);
-        taskRepository.save(task);*//*
-        treeRepository.save(tree);
-*/
+      //Reihenfolge beachten
+      organisationRepository.save(organisation);
+      arborUserRepository.save(arborUser);
+      treeRepository.save(tree);
     }
 
 

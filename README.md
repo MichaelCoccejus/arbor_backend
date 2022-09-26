@@ -226,7 +226,19 @@ POST arbor.berrytopia.eu:8080/api/v1/organisations/
 }
 ```
 
-
+##GeoObjecs
+### Trees hinzufügen
+### PUT arbor.berrytopia.eu:8080/api/v1/trees
+```JSON
+{
+    "organisation": {
+    "id": 1
+    },
+    "name": "Morus Ruba",
+    "userDescription": "Traegt Rote Fruechte",
+    "plantedDate": "2000-01-21"
+}
+``
 
 
 

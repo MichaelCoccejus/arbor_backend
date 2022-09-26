@@ -1,5 +1,6 @@
 package eu.berrytopia.arbor.arboruser;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import eu.berrytopia.arbor.geoobject.GeoObject;
 import eu.berrytopia.arbor.organisation.Organisation;
@@ -7,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +16,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table
-public class ArborUser {
+public class ArborUser{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,13 +27,15 @@ public class ArborUser {
     private String email;
 
 
-    @JsonIgnoreProperties("arborUsers")
+    //@JsonIgnoreProperties("arborUsers")
+    @JsonIgnore
     @ManyToOne //owning Side
     private Organisation organisation;
 
-    @JsonIgnoreProperties("relatedUsers")
+    //@JsonIgnoreProperties("relatedUsers")
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<GeoObject> geoObjects;
+    private Set<GeoObject> geoObjects = new HashSet<>();
 
 
     public ArborUser() {
