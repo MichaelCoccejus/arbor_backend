@@ -1,9 +1,8 @@
 package eu.berrytopia.arbor.geoobject;
 
-import eu.berrytopia.arbor.geoobject.event.Event;
 import eu.berrytopia.arbor.geoobject.event.EventRepository;
 import eu.berrytopia.arbor.geoobject.tree.Tree;
-import eu.berrytopia.arbor.organisation.Organisation;
+import eu.berrytopia.arbor.geoobject.tree.TreeRepository;
 import eu.berrytopia.arbor.organisation.OrganisationRepository;
 import org.springframework.stereotype.Component;
 
@@ -19,10 +18,13 @@ public class GeoObjectService {
 
     private final EventRepository eventRepository;
 
-    public GeoObjectService(GeoObjectRepository geoObjectRepository, EventRepository eventRepository, OrganisationRepository organisationRepository) {
+    private final TreeRepository treeRepository;
+
+    public GeoObjectService(GeoObjectRepository geoObjectRepository, EventRepository eventRepository, OrganisationRepository organisationRepository, TreeRepository treeRepository) {
         this.geoObjectRepository = geoObjectRepository;
         this.eventRepository = eventRepository;
         this.organisationRepository = organisationRepository;
+        this.treeRepository = treeRepository;
     }
 
 
@@ -36,5 +38,14 @@ public class GeoObjectService {
         }
 
         return geoObjectOptional.get();
+    }
+
+    public void updateGeobject(GeoObject geoObject ){
+
+        if(geoObject instanceof Tree){
+            treeRepository.save((Tree)geoObject);
+        }
+
+        //To Do andere Objetypen berücksichtigen
     }
 }

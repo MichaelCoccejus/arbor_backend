@@ -26,7 +26,6 @@ public class EventService {
                 event.getRelatedUsers(),
                 event.getRelatedGeoObjects(),
                 event.getGpsPosition(),
-                event.getArea(),
                 event.getEvents(),
                 event.getEventType(),
                 event.getMediaItems()

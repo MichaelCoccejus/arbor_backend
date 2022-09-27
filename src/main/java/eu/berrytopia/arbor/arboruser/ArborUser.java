@@ -34,7 +34,7 @@ public class ArborUser{
 
     //@JsonIgnoreProperties("relatedUsers")
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     private Set<GeoObject> geoObjects = new HashSet<>();
 
 

@@ -23,15 +23,15 @@ public class Event extends GeoObject {
 
     private String eventType;
 
-    @OneToMany(mappedBy = "events")
+    @OneToMany
     private List<Media> mediaItems;
 
     public Event(){
         super(GeoObjectType.EVENT);
     }
 
-    public Event(Organisation organisation, String name, String userDescription, Set<ArborUser> relatedUsers, Set<GeoObject> relatedGeoObjects, GpsPosition gpsPosition, List<GpsPosition> area, List<Event> events, String eventType, List<Media> mediaItems) {
-        super(GeoObjectType.EVENT, organisation, name, userDescription, relatedUsers, relatedGeoObjects, gpsPosition, area, events);
+    public Event(Organisation organisation, String name, String userDescription, Set<ArborUser> relatedUsers, Set<GeoObject> relatedGeoObjects, GpsPosition gpsPosition, List<Event> events, String eventType, List<Media> mediaItems) {
+        super(GeoObjectType.EVENT, organisation, name, userDescription, relatedUsers, relatedGeoObjects, gpsPosition, events);
         this.eventType = eventType;
         this.mediaItems = mediaItems;
     }

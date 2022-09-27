@@ -30,8 +30,8 @@ public class Tree extends GeoObject {
         return Period.between(this.plantedDate,LocalDate.now()).getYears();
     }
 
-    public Tree(Organisation organisation, String name, String userDescription, Set<ArborUser> relatedUsers, Set<GeoObject> relatedGeoObjects, GpsPosition gpsPosition, List<GpsPosition> area, List<Event> events, LocalDate plantedDate) {
-        super(GeoObjectType.TREE, organisation, name, userDescription, relatedUsers, relatedGeoObjects, gpsPosition, area, events);
+    public Tree(Organisation organisation, String name, String userDescription, Set<ArborUser> relatedUsers, Set<GeoObject> relatedGeoObjects, GpsPosition gpsPosition, List<Event> events, LocalDate plantedDate) {
+        super(GeoObjectType.TREE, organisation, name, userDescription, relatedUsers, relatedGeoObjects, gpsPosition, events);
         this.plantedDate = plantedDate;
     }
 

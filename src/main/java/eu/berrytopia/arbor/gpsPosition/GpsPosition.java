@@ -24,12 +24,6 @@ public class GpsPosition {
     private double latitude;
     private Long altitude;
 
-    @OneToOne(cascade = CascadeType.ALL) //owning side
-    private GeoObject geoObject;
-
-    @ManyToOne
-    private GeoObject geoObjects;
-
     public GpsPosition(){
     }
 

@@ -59,20 +59,19 @@ public class InitializeDB {
         Organisation organisation = new Organisation("new Organisation");
         ArborUser arborUser = new ArborUser("Caja","Cocc","Caja","caja@coccejus");
 
-
         arborUser.setOrganisation(organisation);
 
 
 
 
-
+       GpsPosition gpsPosition = new GpsPosition(23,41,1);
 
       Tree tree = new Tree();
       tree.setOrganisation(organisation);
       tree.setName("Morus Alba");
       tree.setUserDescription("Traegt weiße Fruechte");
       tree.setPlantedDate(LocalDate.of(2000,01,21));
-      tree.setGpsPosition(new GpsPosition(23,41,1));
+      tree.setGpsPosition(gpsPosition);
 
 
 
@@ -80,8 +79,11 @@ public class InitializeDB {
 
       //Reihenfolge beachten
       organisationRepository.save(organisation);
+        //gpsPositionRepository.save(gpsPosition);
+        treeRepository.save(tree);
       arborUserRepository.save(arborUser);
-      treeRepository.save(tree);
+
+
     }
 
 
