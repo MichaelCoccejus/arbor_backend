@@ -51,6 +51,7 @@ public class MediaController {
         Media media = new Media();
         media.setAttachmentFull(attachment);
         media.setContentType(file.getContentType());
+        media.setDownloadUrlFull(downloadURl);
         media.setGeoObject(geoObject);
         mediaService.addMedia(media);
 
@@ -63,5 +64,10 @@ public class MediaController {
                 file.getSize());
     }
 
+    @DeleteMapping(path = "{id}")
+    public void deleteMedia(@PathVariable("id") long id) {
+        System.out.println("Media ID=" + id );
+        mediaService.deleteMedia(id);
+    }
 
 }

@@ -20,19 +20,26 @@ public class Media implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    //@ManyToOne@JsonIgnore
-    //@JoinColumn(name = "attachment_preview_id")
-    //private Attachment attachmentPreview;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinColumn(name = "attachment_preview_id")
+    private Attachment attachmentPreview;
 
-    @ManyToOne@JsonIgnore
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "attachment_full_id")
     private Attachment attachmentFull;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(cascade ={CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "geo_object_id")
     GeoObject geoObject;
 
     String contentType;
+
+    String dowloadUrlPreview;
+
+    String downloadUrlFull;
 
 
     //@ManyToOne(cascade = CascadeType.ALL) //owning side

@@ -57,14 +57,14 @@ public class InitializeDB {
     public void init()  {
 
         Organisation organisation = new Organisation("new Organisation");
-        ArborUser arborUser = new ArborUser("Caja","Cocc","Caja","caja@coccejus");
+        ArborUser arborUser = new ArborUser("Max","Muster","maxi","maxi@arbor.de");
 
         arborUser.setOrganisation(organisation);
 
 
 
 
-       GpsPosition gpsPosition = new GpsPosition(23,41,1);
+       GpsPosition gpsPosition = new GpsPosition(49.48647,7.46546,108.21);
 
       Tree tree = new Tree();
       tree.setOrganisation(organisation);
@@ -79,8 +79,8 @@ public class InitializeDB {
 
       //Reihenfolge beachten
       organisationRepository.save(organisation);
-        //gpsPositionRepository.save(gpsPosition);
-        treeRepository.save(tree);
+        //gpsPositionRepository.save(gpsPosition)
+      treeRepository.save(tree);
       arborUserRepository.save(arborUser);
 
 

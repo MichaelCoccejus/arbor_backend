@@ -9,7 +9,6 @@ import java.util.Optional;
 public class MediaService {
     private final MediaRepository mediaRepository;
 
-
     public MediaService(MediaRepository mediaRepository) {
         this.mediaRepository = mediaRepository;
     }
@@ -28,6 +27,18 @@ public class MediaService {
     public void addMedia(Media media) {
         mediaRepository.save(media);
     }
+
+    public void deleteMedia(Long id) {
+
+        Optional<Media> mediaOptional = mediaRepository.findById(id);
+        if (!mediaOptional.isPresent()) {
+            throw new IllegalStateException("Media with ID " + id + " does not exist");
+        }
+        Media media = mediaOptional.get();
+        media.getGeoObject().getMediaSet().remove(media);
+        mediaRepository.delete(media);
+    }
+
 
 
 }

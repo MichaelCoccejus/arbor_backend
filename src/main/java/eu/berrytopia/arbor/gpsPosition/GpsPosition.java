@@ -22,7 +22,7 @@ public class GpsPosition {
     private long id;
     private double longitude;
     private double latitude;
-    private Long altitude;
+    private double altitude;
 
     public GpsPosition(){
     }
@@ -32,7 +32,7 @@ public class GpsPosition {
         this.latitude = latitude;
     }
 
-    public GpsPosition(double longitude, double latitude, long altitude) {
+    public GpsPosition(double longitude, double latitude, double altitude) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.altitude = altitude;
