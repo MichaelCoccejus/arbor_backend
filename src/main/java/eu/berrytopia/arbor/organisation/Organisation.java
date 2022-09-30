@@ -23,10 +23,8 @@ public class Organisation {
 
     private String name;
 
-
     @OneToMany(mappedBy = "organisation", cascade = CascadeType.ALL) //owning side is ArborUsers
     private Set<ArborUser> arborUsers = new HashSet<>();
-
 
     @OneToMany(mappedBy = "organisation", cascade = CascadeType.ALL) //owning side is GeoObjects
     private Set<GeoObject> geoObjects = new HashSet<>();

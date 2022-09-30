@@ -56,7 +56,6 @@ public class GeoObject implements java.io.Serializable {
     @JoinColumn(name = "gps_position_id")
     private GpsPosition gpsPosition;
 
-
     @OneToMany(cascade = CascadeType.ALL)
     private List<Event> events = new ArrayList<>();
     private Timestamp createdTime;

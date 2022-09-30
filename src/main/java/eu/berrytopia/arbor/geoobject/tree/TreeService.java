@@ -1,12 +1,12 @@
 package eu.berrytopia.arbor.geoobject.tree;
 
-import eu.berrytopia.arbor.organisation.Organisation;
+import eu.berrytopia.arbor.arboruser.ArborUser;
+import eu.berrytopia.arbor.arboruser.ArborUserService;
 import eu.berrytopia.arbor.organisation.OrganisationService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Component
 public class TreeService {
@@ -14,9 +14,12 @@ public class TreeService {
     private final TreeRepository treeRepository;
     private final OrganisationService organisationService;
 
-    public TreeService(TreeRepository treeRepository, OrganisationService organisationService){
+    private final ArborUserService arborUserService;
+
+    public TreeService(TreeRepository treeRepository, OrganisationService organisationService, ArborUserService arborUserService){
         this.treeRepository = treeRepository;
         this.organisationService = organisationService;
+        this.arborUserService = arborUserService;
     }
 
 
@@ -39,11 +42,13 @@ public class TreeService {
         if (treeOptional.isPresent()){
             throw new IllegalStateException("Name is taken");
         }
-        // tree.getOrganisation().getId());
 
         treeRepository.save(tree);
-        //organisationService.updateOrganisation(organisation);
-        //System.out.println(tree);
+        tree.getRelatedUsers().forEach(arborUser -> {
+            ArborUser relatedUser = arborUserService.getArborUser(arborUser.getId());
+            relatedUser.getGeoObjects().add(tree);
+            arborUserService.updateArborUser(relatedUser);
+        });
     }
 
     public void deleteTree(Long treeId) {

@@ -61,9 +61,6 @@ public class InitializeDB {
 
         arborUser.setOrganisation(organisation);
 
-
-
-
        GpsPosition gpsPosition = new GpsPosition(49.48647,7.46546,108.21);
 
       Tree tree = new Tree();
@@ -72,8 +69,6 @@ public class InitializeDB {
       tree.setUserDescription("Traegt weiße Fruechte");
       tree.setPlantedDate(LocalDate.of(2000,01,21));
       tree.setGpsPosition(gpsPosition);
-
-
 
       arborUser.getGeoObjects().add(tree);
 
